@@ -41,21 +41,14 @@ h1.app-title{text-align:center;color:#1a2e4a;font-size:1.4rem;margin-bottom:16px
 .total-box .lbl{font-size:.72rem;color:#64748b;font-weight:600;text-transform:uppercase;margin-bottom:2px}
 .total-box .amt{font-size:1.1rem;font-weight:800;color:#8c4a6e}
 .gen-btn{width:100%;padding:13px;background:linear-gradient(135deg,#1a2e4a,#2563eb);color:#fff;border:none;border-radius:10px;font-size:.97rem;font-weight:700;cursor:pointer;margin-top:4px}
-.save-btn{padding:9px 20px;background:#059669;border:none;border-radius:8px;color:#fff;font-size:.88rem;font-weight:700;cursor:pointer;margin-top:8px}
-.saved-msg{color:#059669;font-size:.78rem;font-weight:600;margin-left:10px;opacity:0;transition:opacity .4s}
-.saved-msg.show{opacity:1}
-.settings-grid{display:flex;gap:12px;flex-wrap:wrap}
-.settings-grid .fg{flex:1;min-width:150px}
-.logo-area p{font-size:.7rem;color:#a0aec0;margin-top:4px}
 .receipt-wrap{padding:10px 0}
 #receiptDoc{background:#fff;border:1px solid #e2e8f0;border-radius:8px;overflow:hidden;font-family:'Segoe UI',Arial,sans-serif;color:#1a2e4a}
 .rec-header{background:linear-gradient(135deg,#1a2e4a 0%,#2563eb 100%);padding:28px 32px;display:flex;align-items:center;gap:20px}
 .rec-header-logo{flex-shrink:0}
-.rec-header-logo img{max-width:80px;max-height:60px;object-fit:contain}
-.rec-header-logo .bee-emoji{font-size:40px}
+.rec-header-logo img{max-width:80px;max-height:60px;object-fit:contain;border-radius:4px;background:#fff;padding:2px}
 .rec-header-text{flex:1}
-.rec-biz-name{font-size:1.3rem;font-weight:800;color:#fff;letter-spacing:.5px}
-.rec-tagline{font-size:.78rem;color:#93c5fd;margin-top:2px}
+.rec-biz-name{font-size:1.1rem;font-weight:800;color:#fff;letter-spacing:.3px}
+.rec-tagline{font-size:.75rem;color:#93c5fd;margin-top:2px}
 .rec-badge{background:rgba(255,255,255,.18);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:2px;padding:3px 10px;border-radius:20px;display:inline-block;margin-top:6px}
 .rec-body{padding:24px 32px}
 .rec-section{margin-bottom:18px}
@@ -93,22 +86,7 @@ h1.app-title{text-align:center;color:#1a2e4a;font-size:1.4rem;margin-bottom:16px
 <body>
 <h1 class="app-title">🐝 Honey Bee Rides - Receipt Generator</h1>
 <div class="app-wrapper">
-<div class="panel full-width">
-<h2>⚙️ Driver / Business Settings <span class="saved-msg" id="savedMsg">✓ Saved!</span></h2>
-<div class="settings-grid">
-<div class="fg"><label>Business Name</label><input id="sBiz" placeholder="Honey Bee Rides"></div>
-<div class="fg"><label>Driver Name</label><input id="sDrv" placeholder="Your name"></div>
-<div class="fg"><label>Phone / Contact</label><input id="sPh" placeholder="(720) 555-0101"></div>
-<div class="fg"><label>License Plate</label><input id="sPlt" placeholder="ABC-1234"></div>
-<div class="fg"><label>Vehicle</label><input id="sVeh" placeholder="2022 Toyota Camry"></div>
-</div>
-<div class="fg logo-area">
-<label>Business Logo</label>
-<input type="file" id="logoFile" accept="image/*">
-<p>Upload your logo — saved in browser storage</p>
-</div>
-<button class="save-btn" onclick="saveSettings()">💾 Save Settings</button>
-</div>
+
 <div class="panel form-panel">
 <h2>📋 Receipt Details</h2>
 <div class="fg"><label>Customer Name</label><input id="custName" placeholder="John Smith"></div>
@@ -147,6 +125,7 @@ h1.app-title{text-align:center;color:#1a2e4a;font-size:1.4rem;margin-bottom:16px
 </div>
 <button class="gen-btn" onclick="generateReceipt()">🧾 Generate Receipt</button>
 </div>
+
 <div class="panel receipt-panel">
 <h2>🧾 Receipt Preview</h2>
 <div class="receipt-wrap">
@@ -163,40 +142,28 @@ h1.app-title{text-align:center;color:#1a2e4a;font-size:1.4rem;margin-bottom:16px
 <button onclick="doSms()">Send</button>
 </div>
 </div>
+
 </div>
 <div id="printArea"></div>
+
 <script>
+var BIZ = "Honey Bee Rides - DCO";
+var DRV = "Douglas R.E. Ries";
+var PH  = "303.881.1803";
+var VEH = "Black Tesla Model 3";
+var LOGO = "logo.png";
 var selectedTrip = "";
 var selectedPay = "";
 var receiptText = "";
+
 window.onload = function() {
-  document.getElementById("sBiz").value = localStorage.getItem("hbr-biz") || "";
-  document.getElementById("sDrv").value = localStorage.getItem("hbr-drv") || "";
-  document.getElementById("sPh").value  = localStorage.getItem("hbr-ph")  || "";
-  document.getElementById("sPlt").value = localStorage.getItem("hbr-plt") || "";
-  document.getElementById("sVeh").value = localStorage.getItem("hbr-veh") || "";
   var today = new Date();
   var dd = String(today.getDate()).padStart(2,"0");
   var mm = String(today.getMonth()+1).padStart(2,"0");
   var yyyy = today.getFullYear();
   document.getElementById("rideDate").value = yyyy+"-"+mm+"-"+dd;
 };
-function saveSettings() {
-  localStorage.setItem("hbr-biz", document.getElementById("sBiz").value);
-  localStorage.setItem("hbr-drv", document.getElementById("sDrv").value);
-  localStorage.setItem("hbr-ph",  document.getElementById("sPh").value);
-  localStorage.setItem("hbr-plt", document.getElementById("sPlt").value);
-  localStorage.setItem("hbr-veh", document.getElementById("sVeh").value);
-  var lf = document.getElementById("logoFile");
-  if (lf.files && lf.files[0]) {
-    var reader = new FileReader();
-    reader.onload = function(e) { localStorage.setItem("hbr-logo", e.target.result); };
-    reader.readAsDataURL(lf.files[0]);
-  }
-  var msg = document.getElementById("savedMsg");
-  msg.classList.add("show");
-  setTimeout(function(){ msg.classList.remove("show"); }, 2000);
-}
+
 function selectTrip(t) {
   selectedTrip = t;
   document.getElementById("btnFromHome").classList.toggle("active", t==="from");
@@ -204,6 +171,7 @@ function selectTrip(t) {
   document.getElementById("customRide").value = "";
   document.getElementById("customBox").classList.remove("active");
 }
+
 function onCustomType() {
   var v = document.getElementById("customRide").value;
   if (v) {
@@ -215,6 +183,7 @@ function onCustomType() {
     document.getElementById("customBox").classList.remove("active");
   }
 }
+
 function selectPay(p) {
   selectedPay = p;
   document.getElementById("payVisa").classList.toggle("active", p==="visa");
@@ -222,11 +191,13 @@ function selectPay(p) {
   document.getElementById("payAmex").classList.toggle("active", p==="amex");
   document.getElementById("last4Wrap").style.display = "flex";
 }
+
 function calcTotal() {
   var b = parseFloat(document.getElementById("baseFare").value) || 0;
   var t = parseFloat(document.getElementById("tipAmt").value) || 0;
   document.getElementById("totalDisplay").textContent = "$"+(b+t).toFixed(2);
 }
+
 function fmtDate(val) {
   if (!val) return "";
   var p = val.split("-");
@@ -234,6 +205,7 @@ function fmtDate(val) {
   var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
   return months[parseInt(p[1])-1]+" "+parseInt(p[2])+", "+p[0];
 }
+
 function generateReceipt() {
   var custName = document.getElementById("custName").value.trim() || "Guest";
   var rideDate = fmtDate(document.getElementById("rideDate").value);
@@ -253,15 +225,9 @@ function generateReceipt() {
   var base  = parseFloat(document.getElementById("baseFare").value) || 0;
   var tip   = parseFloat(document.getElementById("tipAmt").value)   || 0;
   var total = base + tip;
-  var biz  = localStorage.getItem("hbr-biz") || document.getElementById("sBiz").value || "Honey Bee Rides";
-  var drv  = localStorage.getItem("hbr-drv") || document.getElementById("sDrv").value || "";
-  var ph   = localStorage.getItem("hbr-ph")  || document.getElementById("sPh").value  || "";
-  var plt  = localStorage.getItem("hbr-plt") || document.getElementById("sPlt").value || "";
-  var veh  = localStorage.getItem("hbr-veh") || document.getElementById("sVeh").value || "";
-  var logo = localStorage.getItem("hbr-logo") || "";
-  var rnum = "R-" + Math.floor(100000 + Math.random()*900000);
+  var rnum  = "R-" + Math.floor(100000 + Math.random()*900000);
   var L = [];
-  L.push(biz.toUpperCase() + " - RECEIPT");
+  L.push(BIZ + " - RECEIPT");
   L.push("Receipt #: " + rnum);
   L.push("Date: " + rideDate);
   L.push("----------------------------");
@@ -273,24 +239,17 @@ function generateReceipt() {
   L.push("Tip: $" + tip.toFixed(2));
   L.push("TOTAL: $" + total.toFixed(2));
   L.push("----------------------------");
-  if (drv) L.push("Driver: " + drv);
-  if (veh) L.push("Vehicle: " + veh);
-  if (plt) L.push("Plate: " + plt);
-  if (ph)  L.push("Contact: " + ph);
+  L.push("Driver: " + DRV);
+  L.push("Vehicle: " + VEH);
+  L.push("Contact: " + PH);
   L.push("Thank you for riding with us!");
   receiptText = L.join("\n");
-  var logoHtml = logo ? '<img src="' + logo + '" alt="logo" style="max-width:80px;max-height:60px;object-fit:contain">' : '<div style="font-size:40px">🐝</div>';
-  var driverRows = "";
-  if (drv) driverRows += '<div class="rec-driver-item"><div class="dk">Driver</div><div class="dv">' + drv + '</div></div>';
-  if (veh) driverRows += '<div class="rec-driver-item"><div class="dk">Vehicle</div><div class="dv">' + veh + '</div></div>';
-  if (plt) driverRows += '<div class="rec-driver-item"><div class="dk">License Plate</div><div class="dv">' + plt + '</div></div>';
-  if (ph)  driverRows += '<div class="rec-driver-item"><div class="dk">Contact</div><div class="dv">' + ph + '</div></div>';
   var h = "";
   h += '<div class="rec-header">';
-  h +=   '<div class="rec-header-logo">' + logoHtml + '</div>';
+  h +=   '<div class="rec-header-logo"><img src="' + LOGO + '" alt="Honey Bee Rides Logo" onerror="this.style.display='none'"></div>';
   h +=   '<div class="rec-header-text">';
-  h +=     '<div class="rec-biz-name">' + biz + '</div>';
-  h +=     '<div class="rec-tagline">Private Car Service</div>';
+  h +=     '<div class="rec-biz-name">' + BIZ + '</div>';
+  h +=     '<div class="rec-tagline">Private Car Service &bull; Reliable Rides at a Sweet Price</div>';
   h +=     '<div class="rec-badge">RECEIPT</div>';
   h +=   '</div>';
   h +=   '<div style="text-align:right;color:rgba(255,255,255,.7);font-size:.75rem">';
@@ -314,20 +273,23 @@ function generateReceipt() {
   h +=   '<div class="tl">Total Charged</div>';
   h +=   '<div class="ta">$' + total.toFixed(2) + '</div>';
   h += '</div>';
-  if (driverRows) {
-    h += '<div class="rec-driver">';
-    h +=   '<div class="rec-driver-title">Ride Provided By</div>';
-    h +=   '<div class="rec-driver-grid">' + driverRows + '</div>';
-    h += '</div>';
-  }
+  h += '<div class="rec-driver">';
+  h +=   '<div class="rec-driver-title">Ride Provided By</div>';
+  h +=   '<div class="rec-driver-grid">';
+  h +=     '<div class="rec-driver-item"><div class="dk">Driver</div><div class="dv">' + DRV + '</div></div>';
+  h +=     '<div class="rec-driver-item"><div class="dk">Vehicle</div><div class="dv">' + VEH + '</div></div>';
+  h +=     '<div class="rec-driver-item"><div class="dk">Contact</div><div class="dv">' + PH + '</div></div>';
+  h +=   '</div>';
+  h += '</div>';
   h += '</div>';
   h += '<div class="rec-footer">';
-  h +=   '<p>Thank you for choosing <strong>' + biz + '</strong></p>';
+  h +=   '<p>Thank you for choosing <strong>' + BIZ + '</strong></p>';
   h +=   '<p style="margin-top:4px">Reliable Rides at a Sweet Price</p>';
   h += '</div>';
   document.getElementById("receiptDoc").innerHTML = h;
   document.getElementById("actionBtns").style.display = "flex";
 }
+
 function savePDF() {
   var printArea = document.getElementById("printArea");
   printArea.innerHTML = document.getElementById("receiptDoc").outerHTML;
@@ -335,10 +297,12 @@ function savePDF() {
   window.print();
   setTimeout(function(){ printArea.style.display = "none"; printArea.innerHTML = ""; }, 1000);
 }
+
 function toggleSms() {
   var row = document.getElementById("smsRow");
   row.style.display = row.style.display === "flex" ? "none" : "flex";
 }
+
 function doSms() {
   var phone = document.getElementById("smsPhone").value.trim();
   if (!phone) { alert("Please enter a phone number."); return; }
