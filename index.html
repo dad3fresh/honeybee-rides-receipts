@@ -49,62 +49,84 @@ h1.app-title{text-align:center;color:#1a2e4a;font-size:1.4rem;margin-bottom:16px
 .logo-area{border:2px dashed #cbd5e0;border-radius:8px;padding:12px;text-align:center;cursor:pointer;background:#f7fafc}
 .logo-area p{font-size:.78rem;color:#718096;margin-top:3px}
 .logo-area input{display:none}
-.logo-preview{max-height:56px;max-width:100%;border-radius:5px}
-/* RECEIPT */
-#receipt{border:1.5px solid #e2e8f0;border-radius:10px;padding:24px 20px;background:#fff;max-width:400px;margin:0 auto}
-.r-head{text-align:center;padding-bottom:14px;border-bottom:2px dashed #e2e8f0;margin-bottom:14px}
-.r-logo{width:80px;height:80px;border:2px dashed #cbd5e0;border-radius:8px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;color:#a0aec0;font-size:.65rem;text-align:center;overflow:hidden}
-.r-logo img{width:100%;height:100%;object-fit:contain}
-.r-biz{font-size:1.25rem;font-weight:800;color:#1a2e4a}
-.r-tag{font-size:.75rem;color:#718096;margin-top:2px}
-.r-badge-receipt{font-size:.68rem;font-weight:700;color:#fff;background:#1a2e4a;display:inline-block;padding:2px 11px;border-radius:20px;margin-top:7px;letter-spacing:1px}
-.r-row{display:flex;justify-content:space-between;align-items:center;padding:4px 0}
-.r-lbl{font-size:.78rem;color:#718096;font-weight:500}
-.r-val{font-size:.86rem;color:#2d3748;font-weight:600;text-align:right;max-width:62%}
-.r-div{border:none;border-top:1px dashed #e2e8f0;margin:8px 0}
-.r-total{display:flex;justify-content:space-between;align-items:center;padding:9px 0}
-.r-total-lbl{font-size:.95rem;font-weight:800;color:#1a2e4a}
-.r-total-amt{font-size:1.25rem;font-weight:800;color:#1a2e4a}
-.r-pay-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 11px;border-radius:20px;font-size:.74rem;font-weight:800}
-.r-pay-badge.visa{background:#dbeafe;color:#1a3b8f}
-.r-pay-badge.mc{background:#fee2e2;color:#b91c1c}
-.r-pay-badge.amex{background:#e0f2fe;color:#007bc0}
-.r-dots{font-size:.65rem;letter-spacing:1px;opacity:.7}
-.r-driver-box{background:#f8fafc;border-radius:7px;padding:11px 13px;margin-top:12px}
-.r-driver-title{font-size:.68rem;font-weight:700;color:#718096;text-transform:uppercase;letter-spacing:.8px;margin-bottom:5px}
-.r-driver-name{font-size:.9rem;font-weight:700;color:#1a2e4a}
-.r-driver-detail{font-size:.76rem;color:#718096;margin-top:2px}
-.r-footer{text-align:center;margin-top:14px;padding-top:12px;border-top:2px dashed #e2e8f0;font-size:.7rem;color:#a0aec0}
-.r-footer strong{color:#4a5568}
-/* SEND SECTION */
-.send-wrap{max-width:400px;margin:14px auto 0}
-.send-btns{display:flex;gap:10px;margin-bottom:10px}
-.send-btn-item{flex:1;padding:11px 8px;border:none;border-radius:9px;font-size:.9rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
-.sbt-text{background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff}
-.sbt-email{background:linear-gradient(135deg,#ea580c,#f97316);color:#fff}
-.send-input-box{background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:9px;padding:12px;margin-bottom:8px;display:none}
+.logo-preview-img{max-height:56px;max-width:100%;border-radius:5px}
+/* ── THERMAL RECEIPT ─────────────────────── */
+.receipt-outer{display:flex;justify-content:center;padding:0}
+#receipt{
+  width:300px;
+  background:#fff;
+  font-family:'Courier New',Courier,monospace;
+  padding:20px 16px;
+  border-radius:4px;
+  box-shadow:0 2px 8px rgba(0,0,0,.15),0 0 0 1px rgba(0,0,0,.06);
+  position:relative;
+}
+/* top serrated edge */
+#receipt::before{
+  content:"";
+  display:block;
+  height:10px;
+  margin:-20px -16px 14px;
+  background:
+    radial-gradient(circle at 6px 0,#f0f4f8 6px,#fff 6px) -3px 0 / 12px 10px;
+}
+/* bottom serrated edge */
+#receipt::after{
+  content:"";
+  display:block;
+  height:10px;
+  margin:14px -16px -20px;
+  background:
+    radial-gradient(circle at 6px 10px,#f0f4f8 6px,#fff 6px) -3px 0 / 12px 10px;
+}
+.rc-logo{width:70px;height:70px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.rc-logo img{width:100%;height:100%;object-fit:contain}
+.rc-logo-ph{font-size:.6rem;color:#a0aec0;text-align:center}
+.rc-biz{font-size:.95rem;font-weight:700;color:#111;text-align:center;text-transform:uppercase;letter-spacing:1px}
+.rc-tag{font-size:.65rem;color:#666;text-align:center;margin-top:2px}
+.rc-badge{display:block;text-align:center;font-size:.6rem;font-weight:700;letter-spacing:2px;color:#555;margin-top:6px}
+.rc-divider-star{text-align:center;font-size:.7rem;color:#bbb;margin:8px 0;letter-spacing:3px}
+.rc-divider-dash{border:none;border-top:1px dashed #ccc;margin:8px 0}
+.rc-divider-solid{border:none;border-top:1px solid #333;margin:8px 0}
+.rc-row{display:flex;justify-content:space-between;align-items:flex-start;margin:3px 0;font-size:.72rem;color:#222;line-height:1.4}
+.rc-row .k{color:#555;flex:1}
+.rc-row .v{font-weight:700;text-align:right;max-width:60%}
+.rc-trip{font-size:.68rem;color:#222;margin:3px 0;line-height:1.4}
+.rc-trip .k{color:#555}
+.rc-trip .v{font-weight:700;font-size:.68rem}
+.rc-pay-badge{display:inline-block;padding:1px 7px;border-radius:3px;font-size:.65rem;font-weight:700}
+.rc-pay-badge.visa{background:#dbeafe;color:#1a3b8f}
+.rc-pay-badge.mc{background:#fee2e2;color:#b91c1c}
+.rc-pay-badge.amex{background:#e0f2fe;color:#007bc0}
+.rc-total-row{display:flex;justify-content:space-between;align-items:center;margin:6px 0 2px}
+.rc-total-row .k{font-size:.85rem;font-weight:700;color:#111}
+.rc-total-row .v{font-size:1.1rem;font-weight:700;color:#111}
+.rc-driver-block{margin-top:4px;font-size:.68rem;color:#444;line-height:1.5}
+.rc-driver-block .name{font-weight:700;font-size:.72rem;color:#111}
+.rc-footer{text-align:center;font-size:.62rem;color:#aaa;margin-top:2px;line-height:1.5}
+/* action buttons below receipt */
+.receipt-actions{display:flex;gap:10px;margin-top:16px;max-width:300px;margin-left:auto;margin-right:auto}
+.action-btn{flex:1;padding:11px 6px;border:none;border-radius:9px;font-size:.88rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
+.action-btn.screenshot{background:linear-gradient(135deg,#1a2e4a,#2563eb);color:#fff}
+.action-btn.sms-btn{background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff}
+.send-input-box{background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:9px;padding:12px;margin-top:8px;display:none;max-width:300px;margin-left:auto;margin-right:auto}
 .send-input-box.open{display:block}
 .send-input-box label{font-size:.76rem;font-weight:700;color:#4a5568;text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:5px}
 .send-row{display:flex;gap:7px}
 .send-row input{flex:1;padding:8px 11px;border:1.5px solid #e2e8f0;border-radius:7px;font-size:.9rem;color:#2d3748;font-family:inherit}
 .send-row input:focus{outline:none;border-color:#f59e0b}
-.send-confirm{padding:8px 14px;border:none;border-radius:7px;font-size:.84rem;font-weight:700;cursor:pointer;color:#fff;white-space:nowrap}
-.sc-text{background:#7c3aed}
-.sc-email{background:#ea580c}
+.send-confirm{padding:8px 14px;border:none;border-radius:7px;font-size:.84rem;font-weight:700;cursor:pointer;color:#fff;white-space:nowrap;background:#7c3aed}
 .send-status{font-size:.78rem;font-weight:600;margin-top:7px;padding:6px 9px;border-radius:6px;display:none}
 .ss-ok{background:#d1fae5;color:#065f46;display:block}
-.ss-err{background:#e0f2fe;color:#0c4a6e;display:block}
-.print-btn{width:100%;padding:11px;background:linear-gradient(135deg,#059669,#10b981);color:#fff;border:none;border-radius:9px;font-size:.9rem;font-weight:700;cursor:pointer;margin-top:9px}
+.ss-err{background:#fee2e2;color:#b91c1c;display:block}
 .placeholder{text-align:center;color:#a0aec0;font-size:.88rem;padding:36px 16px}
 .placeholder .ico{font-size:2.2rem;margin-bottom:9px}
 @media(max-width:700px){.app-wrapper{gap:14px}.panel{padding:16px}}
-@media print{body{background:#fff;padding:0}.app-title,.form-panel,.full-width,.receipt-panel h2,.print-btn,.send-wrap{display:none!important}.app-wrapper{display:block}.receipt-panel{box-shadow:none;border:none;padding:0}#receipt{border:none;max-width:100%}}
 </style>
 </head>
 <body>
 <h1 class="app-title">&#x1F41D; Honey Bee Rides &#x2014; Receipt Generator</h1>
 <div class="app-wrapper">
-<!-- SETTINGS -->
 <div class="panel full-width">
 <h2>&#x2699;&#xFE0F; Driver / Business Settings <small style="font-weight:400;color:#a0aec0;font-size:.74rem;">(set once &#x2014; auto-saved)</small></h2>
 <div class="settings-grid">
@@ -122,7 +144,6 @@ h1.app-title{text-align:center;color:#1a2e4a;font-size:1.4rem;margin-bottom:16px
 <button class="save-btn" id="save-btn">Save Settings</button>
 <span class="saved-msg" id="saved-msg">&#x2713; Saved!</span>
 </div>
-<!-- FORM -->
 <div class="panel form-panel">
 <h2>&#x1F4DD; Receipt Details</h2>
 <div class="fg"><label>Customer Name</label><input type="text" id="f-name" placeholder="Jane Doe"></div>
@@ -156,7 +177,6 @@ h1.app-title{text-align:center;color:#1a2e4a;font-size:1.4rem;margin-bottom:16px
 <div class="fg"><div class="total-box"><div class="lbl">Total Charged</div><div class="amt" id="total-amt">$0.00</div></div></div>
 <button type="button" class="gen-btn" id="gen-btn">Generate Receipt &#x2192;</button>
 </div>
-<!-- RECEIPT PREVIEW -->
 <div class="panel receipt-panel">
 <h2>&#x1F9FE; Receipt Preview</h2>
 <div id="rc"><div class="placeholder"><div class="ico">&#x1F9FE;</div>Fill in the details and tap<br><strong>Generate Receipt</strong></div></div>
@@ -166,250 +186,220 @@ h1.app-title{text-align:center;color:#1a2e4a;font-size:1.4rem;margin-bottom:16px
 (function() {
   var tripSel = 1, paySel = null, logoData = null;
 
-  // Set today
   var today = new Date();
-  var yyyy = today.getFullYear();
-  var mm = String(today.getMonth() + 1).padStart(2, "0");
-  var dd = String(today.getDate()).padStart(2, "0");
-  document.getElementById("f-date").value = yyyy + "-" + mm + "-" + dd;
+  document.getElementById("f-date").value =
+    today.getFullYear() + "-" +
+    String(today.getMonth()+1).padStart(2,"0") + "-" +
+    String(today.getDate()).padStart(2,"0");
 
-  // Load saved settings
-  var FIELDS = ["s-biz", "s-drv", "s-ph", "s-plt", "s-veh"];
+  var FIELDS = ["s-biz","s-drv","s-ph","s-plt","s-veh"];
   FIELDS.forEach(function(id) {
-    try { var v = localStorage.getItem("hbr-" + id); if (v) document.getElementById(id).value = v; } catch(e) {}
+    try { var v = localStorage.getItem("hbr-"+id); if(v) document.getElementById(id).value = v; } catch(e){}
   });
   try {
-    var saved_logo = localStorage.getItem("hbr-logo");
-    if (saved_logo) {
-      logoData = saved_logo;
-      document.getElementById("logo-preview").innerHTML = '<img src="' + saved_logo + '" class="logo-preview">';
-    }
-  } catch(e) {}
+    var sl = localStorage.getItem("hbr-logo");
+    if (sl) { logoData = sl; document.getElementById("logo-preview").innerHTML = '<img src="'+sl+'" class="logo-preview-img">'; }
+  } catch(e){}
 
-  // Logo upload
   document.getElementById("logo-area").addEventListener("click", function() {
     document.getElementById("logo-file").click();
   });
   document.getElementById("logo-file").addEventListener("change", function(e) {
-    var file = e.target.files[0];
-    if (!file) return;
-    var reader = new FileReader();
-    reader.onload = function(ev) {
+    var file = e.target.files[0]; if (!file) return;
+    var r = new FileReader();
+    r.onload = function(ev) {
       logoData = ev.target.result;
-      document.getElementById("logo-preview").innerHTML = '<img src="' + logoData + '" class="logo-preview">';
+      document.getElementById("logo-preview").innerHTML = '<img src="'+logoData+'" class="logo-preview-img">';
     };
-    reader.readAsDataURL(file);
+    r.readAsDataURL(file);
   });
 
-  // Save settings
   document.getElementById("save-btn").addEventListener("click", function() {
     FIELDS.forEach(function(id) {
-      try { localStorage.setItem("hbr-" + id, document.getElementById(id).value || ""); } catch(e) {}
+      try { localStorage.setItem("hbr-"+id, document.getElementById(id).value||""); } catch(e){}
     });
-    if (logoData) { try { localStorage.setItem("hbr-logo", logoData); } catch(e) {} }
+    if (logoData) { try { localStorage.setItem("hbr-logo", logoData); } catch(e){} }
     var m = document.getElementById("saved-msg");
     m.classList.add("show");
-    setTimeout(function() { m.classList.remove("show"); }, 2500);
+    setTimeout(function(){ m.classList.remove("show"); }, 2500);
   });
 
-  // Trip buttons
   document.getElementById("trip-1").addEventListener("click", function() {
-    tripSel = 1;
+    tripSel=1;
     document.getElementById("trip-1").classList.add("active");
     document.getElementById("trip-2").classList.remove("active");
-    document.getElementById("f-custom").value = "";
+    document.getElementById("f-custom").value="";
     document.getElementById("custom-box").classList.remove("active");
   });
   document.getElementById("trip-2").addEventListener("click", function() {
-    tripSel = 2;
+    tripSel=2;
     document.getElementById("trip-2").classList.add("active");
     document.getElementById("trip-1").classList.remove("active");
-    document.getElementById("f-custom").value = "";
+    document.getElementById("f-custom").value="";
     document.getElementById("custom-box").classList.remove("active");
   });
   document.getElementById("f-custom").addEventListener("input", function() {
     if (this.value.trim()) {
-      tripSel = 0;
+      tripSel=0;
       document.getElementById("trip-1").classList.remove("active");
       document.getElementById("trip-2").classList.remove("active");
       document.getElementById("custom-box").classList.add("active");
     } else {
-      tripSel = 1;
+      tripSel=1;
       document.getElementById("trip-1").classList.add("active");
       document.getElementById("custom-box").classList.remove("active");
     }
   });
 
-  // Payment buttons
-  ["visa", "mc", "amex"].forEach(function(p) {
-    document.getElementById("pay-" + p).addEventListener("click", function() {
-      paySel = p;
-      document.querySelectorAll(".pay-btn").forEach(function(b) { b.classList.remove("active"); });
-      document.getElementById("pay-" + p).classList.add("active");
-      document.getElementById("last4-wrap").style.display = "flex";
+  ["visa","mc","amex"].forEach(function(p) {
+    document.getElementById("pay-"+p).addEventListener("click", function() {
+      paySel=p;
+      document.querySelectorAll(".pay-btn").forEach(function(b){ b.classList.remove("active"); });
+      document.getElementById("pay-"+p).classList.add("active");
+      document.getElementById("last4-wrap").style.display="flex";
       document.getElementById("f-last4").focus();
     });
   });
   document.getElementById("f-last4").addEventListener("input", function() {
-    this.value = this.value.replace(/[^0-9]/g, "").slice(0, 4);
+    this.value = this.value.replace(/[^0-9]/g,"").slice(0,4);
   });
 
-  // Fare calc
   function calcTotal() {
-    var f = parseFloat(document.getElementById("f-fare").value) || 0;
-    var t = parseFloat(document.getElementById("f-tip").value) || 0;
-    document.getElementById("total-amt").textContent = "$" + (f + t).toFixed(2);
+    var f = parseFloat(document.getElementById("f-fare").value)||0;
+    var t = parseFloat(document.getElementById("f-tip").value)||0;
+    document.getElementById("total-amt").textContent = "$"+(f+t).toFixed(2);
   }
-  document.getElementById("f-fare").addEventListener("input", calcTotal);
-  document.getElementById("f-tip").addEventListener("input", calcTotal);
+  document.getElementById("f-fare").addEventListener("input",calcTotal);
+  document.getElementById("f-tip").addEventListener("input",calcTotal);
 
-  // Format money
-  function money(n) { return "$" + (parseFloat(n) || 0).toFixed(2); }
+  function money(n){ return "$"+(parseFloat(n)||0).toFixed(2); }
+  function esc(s){ var d=document.createElement("div"); d.textContent=s; return d.innerHTML; }
 
-  // Generate receipt
   document.getElementById("gen-btn").addEventListener("click", function() {
     var custName = document.getElementById("f-name").value || "Guest";
     var dateRaw  = document.getElementById("f-date").value;
-    var dateObj  = dateRaw ? new Date(dateRaw + "T12:00:00") : new Date();
-    var dateStr  = dateObj.toLocaleDateString("en-US", { weekday:"long", year:"numeric", month:"long", day:"numeric" });
-    var fare     = parseFloat(document.getElementById("f-fare").value) || 0;
-    var tip      = parseFloat(document.getElementById("f-tip").value) || 0;
-    var total    = fare + tip;
+    var dateObj  = dateRaw ? new Date(dateRaw+"T12:00:00") : new Date();
+    var dateStr  = dateObj.toLocaleDateString("en-US",{weekday:"short",year:"numeric",month:"short",day:"numeric"});
+    var fare     = parseFloat(document.getElementById("f-fare").value)||0;
+    var tip      = parseFloat(document.getElementById("f-tip").value)||0;
+    var total    = fare+tip;
     var last4    = document.getElementById("f-last4").value.trim();
     var custom   = document.getElementById("f-custom").value.trim();
 
-    var tripHTML = custom ? ("&#x270F; " + custom)
-      : (tripSel === 2 ? "&#x1F3E0; DIA Transportation &#x2014; To Home Address"
-                       : "&#x2708; DIA Transportation &#x2014; From Home Address");
-    var tripText = custom ? custom
-      : (tripSel === 2 ? "DIA Transportation - To Home Address"
-                       : "DIA Transportation - From Home Address");
+    var tripLine = custom ? custom
+      : (tripSel===2 ? "DIA Transport - To Home" : "DIA Transport - From Home");
 
     var payLabel = paySel ? paySel.toUpperCase() : "N/A";
     var payClass = paySel || "";
-    var cardHTML = payLabel + (last4 ? " <span class='r-dots'>&#x2022;&#x2022;&#x2022;&#x2022; " + last4 + "</span>" : "");
+    var cardStr  = payLabel + (last4 ? " xxxx-"+last4 : "");
 
     var biz  = document.getElementById("s-biz").value  || "Honey Bee Rides";
     var drv  = document.getElementById("s-drv").value  || "Driver";
     var ph   = document.getElementById("s-ph").value   || "";
     var plt  = document.getElementById("s-plt").value  || "";
     var veh  = document.getElementById("s-veh").value  || "";
-    var logo = logoData ? '<img src="' + logoData + '" style="width:100%;height:100%;object-fit:contain">' : "LOGO";
-    var rnum = "R-" + Date.now().toString().slice(-6);
+    var logo = logoData
+      ? '<img src="'+logoData+'" style="width:100%;height:100%;object-fit:contain">'
+      : '<div class="rc-logo-ph">LOGO</div>';
+    var rnum = "R-"+Date.now().toString().slice(-6);
 
-    var drvExtra = "";
-    if (veh) drvExtra += '<div class="r-driver-detail">&#x1F698; ' + veh + "</div>";
-    if (plt) drvExtra += '<div class="r-driver-detail">&#x1F516; Plate: ' + plt + "</div>";
-    if (ph)  drvExtra += '<div class="r-driver-detail">&#x1F4DE; ' + ph  + "</div>";
+    var drvLines = "";
+    if (veh) drvLines += '<div>'+esc(veh)+'</div>';
+    if (plt) drvLines += '<div>Plate: '+esc(plt)+'</div>';
+    if (ph)  drvLines += '<div>'+esc(ph)+'</div>';
 
-    var plain = biz + " RECEIPT\n"
-      + "========================\n"
-      + "Receipt #: " + rnum + "\n"
-      + "Date: " + dateStr + "\n"
-      + "Passenger: " + custName + "\n"
-      + "Trip: " + tripText + "\n"
-      + "Payment: " + payLabel + (last4 ? " xxxx" + last4 : "") + "\n"
-      + "------------------------\n"
-      + "Base Fare: " + money(fare) + "\n"
-      + "Tip:       " + money(tip)  + "\n"
-      + "========================\n"
-      + "TOTAL:     " + money(total) + "\n"
-      + "========================\n"
-      + "Driver: " + drv + "\n"
-      + (veh ? "Vehicle: " + veh + "\n" : "")
-      + (plt ? "Plate: "   + plt + "\n" : "")
-      + (ph  ? "Phone: "   + ph  + "\n" : "")
-      + "\nThank you for choosing " + biz + "!";
+    var plain =
+      biz+" RECEIPT\n"+
+      "================================\n"+
+      "Receipt: "+rnum+"\n"+
+      "Date: "+dateStr+"\n"+
+      "Passenger: "+custName+"\n"+
+      "Trip: "+tripLine+"\n"+
+      "Payment: "+cardStr+"\n"+
+      "--------------------------------\n"+
+      "Base Fare:  "+money(fare)+"\n"+
+      "Tip:        "+money(tip)+"\n"+
+      "================================\n"+
+      "TOTAL:      "+money(total)+"\n"+
+      "================================\n"+
+      "Driver: "+drv+"\n"+
+      (veh?"Vehicle: "+veh+"\n":"")+
+      (plt?"Plate: "+plt+"\n":"")+
+      (ph?"Phone: "+ph+"\n":"")+
+      "\nThank you - "+biz;
 
-    var receiptHTML =
+    var rHTML =
       '<div id="receipt">'
-      + '<div class="r-head">'
-      + '<div class="r-logo">' + logo + "</div>"
-      + '<div class="r-biz">' + biz + "</div>"
-      + '<div class="r-tag">Private Car Service</div>'
-      + '<div class="r-badge-receipt">RECEIPT</div>'
-      + "</div>"
-      + '<div class="r-row"><span class="r-lbl">Receipt #</span><span class="r-val">' + rnum + "</span></div>"
-      + '<div class="r-row"><span class="r-lbl">Date</span><span class="r-val">' + dateStr + "</span></div>"
-      + '<div class="r-row"><span class="r-lbl">Passenger</span><span class="r-val">' + custName + "</span></div>"
-      + '<hr class="r-div">'
-      + '<div class="r-row"><span class="r-lbl">Trip</span><span class="r-val">' + tripHTML + "</span></div>"
-      + '<div class="r-row"><span class="r-lbl">Payment</span><span class="r-val"><span class="r-pay-badge ' + payClass + '">' + cardHTML + "</span></span></div>"
-      + '<hr class="r-div">'
-      + '<div class="r-row"><span class="r-lbl">Base Fare</span><span class="r-val">' + money(fare) + "</span></div>"
-      + '<div class="r-row"><span class="r-lbl">Gratuity / Tip</span><span class="r-val">' + money(tip) + "</span></div>"
-      + '<hr class="r-div">'
-      + '<div class="r-total"><span class="r-total-lbl">TOTAL</span><span class="r-total-amt">' + money(total) + "</span></div>"
-      + '<div class="r-driver-box"><div class="r-driver-title">Ride Provided By</div><div class="r-driver-name">' + drv + "</div>" + drvExtra + "</div>"
-      + '<div class="r-footer">Thank you for choosing <strong>' + biz + "</strong>!<br>Safe travels &#x2014; keep this receipt for your records.</div>"
-      + "</div>";
+      + '<div style="text-align:center;padding-bottom:10px;border-bottom:1px dashed #ccc;margin-bottom:10px">'
+      + '<div class="rc-logo">'+logo+'</div>'
+      + '<div class="rc-biz">'+esc(biz)+'</div>'
+      + '<div class="rc-tag">Private Car Service</div>'
+      + '<div class="rc-badge">* RECEIPT *</div>'
+      + '</div>'
+      + '<div class="rc-row"><span class="k">Receipt #</span><span class="v">'+rnum+'</span></div>'
+      + '<div class="rc-row"><span class="k">Date</span><span class="v">'+dateStr+'</span></div>'
+      + '<div class="rc-row"><span class="k">Passenger</span><span class="v">'+esc(custName)+'</span></div>'
+      + '<hr class="rc-divider-dash">'
+      + '<div class="rc-row"><span class="k">Trip</span><span class="v">'+esc(tripLine)+'</span></div>'
+      + '<div class="rc-row"><span class="k">Payment</span><span class="v"><span class="rc-pay-badge '+payClass+'">'+payLabel+'</span>' + (last4 ? ' xxxx-'+last4 : '') + '</span></div>'
+      + '<hr class="rc-divider-dash">'
+      + '<div class="rc-row"><span class="k">Base Fare</span><span class="v">'+money(fare)+'</span></div>'
+      + '<div class="rc-row"><span class="k">Gratuity/Tip</span><span class="v">'+money(tip)+'</span></div>'
+      + '<hr class="rc-divider-solid">'
+      + '<div class="rc-total-row"><span class="k">TOTAL</span><span class="v">'+money(total)+'</span></div>'
+      + '<hr class="rc-divider-solid">'
+      + '<div class="rc-driver-block">'
+      + '<div style="font-size:.6rem;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px">Ride Provided By</div>'
+      + '<div class="name">'+esc(drv)+'</div>'
+      + drvLines
+      + '</div>'
+      + '<div class="rc-divider-star">* * * * * * * * * * * * *</div>'
+      + '<div class="rc-footer">Thank you for riding with<br><strong>'+esc(biz)+'</strong><br>Keep this receipt for your records.</div>'
+      + '</div>';
 
-    var sendHTML =
-      '<div class="send-wrap">'
-      + '<div class="send-btns">'
-      + '<button type="button" class="send-btn-item sbt-text" id="open-text">&#x1F4F1; Send via Text</button>'
-      + '<button type="button" class="send-btn-item sbt-email" id="open-email">&#x1F4E7; Send via Email</button>'
-      + "</div>"
-      + '<div class="send-input-box" id="text-box">'
+    var actHTML =
+      '<div class="receipt-actions">'
+      + '<button type="button" class="action-btn screenshot" id="btn-screenshot">&#x1F4F8; Screenshot Ready</button>'
+      + '<button type="button" class="action-btn sms-btn" id="btn-sms">&#x1F4F1; Send via Text</button>'
+      + '</div>'
+      + '<div class="send-input-box" id="sms-box">'
       + '<label>Customer Phone Number</label>'
-      + '<div class="send-row"><input type="tel" id="send-ph" placeholder="(720) 555-1234">'
-      + '<button type="button" class="send-confirm sc-text" id="do-text">Send SMS</button></div>'
-      + '<div class="send-status" id="text-st" style="display:none"></div>'
-      + "</div>"
-      + '<div class="send-input-box" id="email-box">'
-      + '<label>Customer Email Address</label>'
-      + '<div class="send-row"><input type="email" id="send-em" placeholder="customer@email.com">'
-      + '<button type="button" class="send-confirm sc-email" id="do-email">Send Email</button></div>'
-      + '<div class="send-status" id="email-st" style="display:none"></div>'
-      + "</div>"
-      + '<button type="button" class="print-btn" id="do-print">&#x1F5A8; Print / Save as PDF</button>'
-      + "</div>";
+      + '<div class="send-row">'
+      + '<input type="tel" id="send-ph" placeholder="(720) 555-1234">'
+      + '<button type="button" class="send-confirm" id="do-sms">Send SMS</button>'
+      + '</div>'
+      + '<div class="send-status" id="sms-st" style="display:none"></div>'
+      + '</div>';
 
-    document.getElementById("rc").innerHTML = receiptHTML + sendHTML;
+    document.getElementById("rc").innerHTML =
+      '<div class="receipt-outer">' + rHTML + '</div>' + actHTML;
 
-    document.getElementById("do-print").addEventListener("click", function() { window.print(); });
-
-    document.getElementById("open-text").addEventListener("click", function() {
-      var tb = document.getElementById("text-box");
-      var eb = document.getElementById("email-box");
-      var o  = tb.classList.contains("open");
-      eb.classList.remove("open");
-      tb.classList.toggle("open", !o);
-      if (!o) document.getElementById("send-ph").focus();
+    document.getElementById("btn-screenshot").addEventListener("click", function() {
+      var el = document.getElementById("receipt");
+      el.scrollIntoView({behavior:"smooth",block:"center"});
+      var orig = el.style.outline;
+      el.style.outline = "3px solid #f59e0b";
+      el.style.outlineOffset = "6px";
+      setTimeout(function(){ el.style.outline=orig; el.style.outlineOffset=""; }, 2000);
+      alert("The receipt is highlighted!\nTake a screenshot now - it will capture just the receipt area.");
     });
 
-    document.getElementById("open-email").addEventListener("click", function() {
-      var tb = document.getElementById("text-box");
-      var eb = document.getElementById("email-box");
-      var o  = eb.classList.contains("open");
-      tb.classList.remove("open");
-      eb.classList.toggle("open", !o);
-      if (!o) document.getElementById("send-em").focus();
+    document.getElementById("btn-sms").addEventListener("click", function() {
+      var box = document.getElementById("sms-box");
+      box.classList.toggle("open");
+      if (box.classList.contains("open")) document.getElementById("send-ph").focus();
     });
 
-    document.getElementById("do-text").addEventListener("click", function() {
-      var p = document.getElementById("send-ph").value.trim().replace(/[^0-9+]/g, "");
-      var s = document.getElementById("text-st");
-      if (!p) { s.className = "send-status ss-err"; s.textContent = "Please enter a phone number."; s.style.display = "block"; return; }
+    document.getElementById("do-sms").addEventListener("click", function() {
+      var p = document.getElementById("send-ph").value.trim().replace(/[^0-9+]/g,"");
+      var s = document.getElementById("sms-st");
+      if (!p) { s.className="send-status ss-err"; s.textContent="Please enter a phone number."; s.style.display="block"; return; }
       var a = document.createElement("a");
-      a.href = "sms:" + p + "?body=" + encodeURIComponent(plain);
-      a.style.display = "none";
+      a.href = "sms:"+p+"?body="+encodeURIComponent(plain);
+      a.style.display="none";
       document.body.appendChild(a); a.click();
-      setTimeout(function() { document.body.removeChild(a); }, 500);
-      s.className = "send-status ss-ok"; s.textContent = "&#x2713; SMS app opened for " + p; s.style.display = "block";
-    });
-
-    document.getElementById("do-email").addEventListener("click", function() {
-      var em = document.getElementById("send-em").value.trim();
-      var s  = document.getElementById("email-st");
-      if (!em || em.indexOf("@") < 0) { s.className = "send-status ss-err"; s.textContent = "Please enter a valid email."; s.style.display = "block"; return; }
-      var subject = biz + " - Your Ride Receipt " + rnum;
-      var a = document.createElement("a");
-      a.href = "mailto:" + encodeURIComponent(em) + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(plain);
-      a.style.display = "none";
-      document.body.appendChild(a); a.click();
-      setTimeout(function() { document.body.removeChild(a); }, 500);
-      s.className = "send-status ss-ok"; s.textContent = "&#x2713; Email app opened for " + em; s.style.display = "block";
+      setTimeout(function(){ document.body.removeChild(a); },500);
+      s.className="send-status ss-ok"; s.textContent="SMS app opened for "+p; s.style.display="block";
     });
   });
 
