@@ -7,11 +7,11 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f4f8;min-height:100vh;padding:16px}
-.app-wrapper{display:flex;gap:20px;max-width:1140px;margin:0 auto;flex-wrap:wrap}
+.app-wrapper{display:flex;gap:20px;max-width:1200px;margin:0 auto;flex-wrap:wrap}
 h1.app-title{text-align:center;color:#1a2e4a;font-size:1.4rem;margin-bottom:16px;width:100%}
 .panel{background:#fff;border-radius:12px;padding:24px;box-shadow:0 4px 16px rgba(0,0,0,.09)}
 .form-panel{flex:1;min-width:300px}
-.receipt-panel{flex:1;min-width:300px}
+.receipt-panel{flex:1;min-width:340px}
 .full-width{width:100%}
 .panel h2{font-size:1rem;color:#1a2e4a;margin-bottom:16px;border-bottom:2px solid #e2e8f0;padding-bottom:8px}
 .fg{margin-bottom:16px}
@@ -47,38 +47,52 @@ h1.app-title{text-align:center;color:#1a2e4a;font-size:1.4rem;margin-bottom:16px
 .settings-grid{display:flex;gap:12px;flex-wrap:wrap}
 .settings-grid .fg{flex:1;min-width:150px}
 .logo-area p{font-size:.7rem;color:#a0aec0;margin-top:4px}
-.receipt-wrap{display:flex;justify-content:center;padding:10px 0}
-.receipt{width:300px;background:#fff;font-family:'Courier New',Courier,monospace;font-size:12px;color:#111;position:relative;padding:0}
-.receipt-tear-top,.receipt-tear-bot{width:100%;height:16px;background:radial-gradient(circle at 50% 0,#fff 6px,#f0f4f8 6px) repeat-x;background-size:14px 16px}
-.receipt-tear-bot{background:radial-gradient(circle at 50% 100%,#fff 6px,#f0f4f8 6px) repeat-x;background-size:14px 16px}
-.receipt-inner{padding:16px 18px}
-.r-logo{text-align:center;margin-bottom:8px}
-.r-logo img{max-width:90px;max-height:60px}
-.r-biz{text-align:center;font-size:14px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
-.r-sub{text-align:center;font-size:10px;color:#555;margin-bottom:6px}
-.r-dash{border:none;border-top:1px dashed #999;margin:8px 0}
-.r-badge{text-align:center;font-size:11px;font-weight:700;letter-spacing:2px;margin:6px 0}
-.r-row{display:flex;justify-content:space-between;margin:3px 0;font-size:11px}
-.r-row .rk{color:#555}
-.r-row .rv{font-weight:700}
-.r-total{display:flex;justify-content:space-between;margin:6px 0;font-size:13px;font-weight:700;border-top:1px solid #999;border-bottom:1px solid #999;padding:4px 0}
-.r-section{margin:8px 0}
-.r-stars{text-align:center;font-size:11px;color:#999;margin-top:8px;letter-spacing:3px}
-.r-thanks{text-align:center;font-size:10px;color:#555;margin-top:4px}
+.receipt-wrap{padding:10px 0}
+#receiptDoc{background:#fff;border:1px solid #e2e8f0;border-radius:8px;overflow:hidden;font-family:'Segoe UI',Arial,sans-serif;color:#1a2e4a}
+.rec-header{background:linear-gradient(135deg,#1a2e4a 0%,#2563eb 100%);padding:28px 32px;display:flex;align-items:center;gap:20px}
+.rec-header-logo{flex-shrink:0}
+.rec-header-logo img{max-width:80px;max-height:60px;object-fit:contain}
+.rec-header-logo .bee-emoji{font-size:40px}
+.rec-header-text{flex:1}
+.rec-biz-name{font-size:1.3rem;font-weight:800;color:#fff;letter-spacing:.5px}
+.rec-tagline{font-size:.78rem;color:#93c5fd;margin-top:2px}
+.rec-badge{background:rgba(255,255,255,.18);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:2px;padding:3px 10px;border-radius:20px;display:inline-block;margin-top:6px}
+.rec-body{padding:24px 32px}
+.rec-section{margin-bottom:18px}
+.rec-section-title{font-size:.72rem;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #f1f5f9}
+.rec-row{display:flex;justify-content:space-between;align-items:flex-start;padding:6px 0;border-bottom:1px solid #f8fafc}
+.rec-row:last-child{border-bottom:none}
+.rec-row .rk{font-size:.85rem;color:#64748b}
+.rec-row .rv{font-size:.85rem;font-weight:600;color:#1a2e4a;text-align:right;max-width:60%}
+.rec-total-box{background:linear-gradient(135deg,#f0f9ff,#e0f2fe);border:2px solid #0ea5e9;border-radius:10px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;margin:18px 0}
+.rec-total-box .tl{font-size:.85rem;font-weight:700;color:#0369a1;text-transform:uppercase;letter-spacing:.5px}
+.rec-total-box .ta{font-size:1.6rem;font-weight:900;color:#0c4a6e}
+.rec-driver{background:#f8fafc;border-radius:8px;padding:16px 20px;margin-top:18px}
+.rec-driver-title{font-size:.72rem;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
+.rec-driver-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.rec-driver-item .dk{font-size:.68rem;color:#94a3b8;text-transform:uppercase;letter-spacing:.4px}
+.rec-driver-item .dv{font-size:.85rem;font-weight:600;color:#1a2e4a;margin-top:1px}
+.rec-footer{background:#f8fafc;border-top:1.5px solid #e2e8f0;padding:14px 32px;text-align:center}
+.rec-footer p{font-size:.75rem;color:#94a3b8}
+.rec-footer strong{color:#1a2e4a}
 .action-btns{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
 .action-btns button{flex:1;padding:11px;border:none;border-radius:9px;font-size:.88rem;font-weight:700;cursor:pointer;min-width:120px}
-.btn-email{background:#059669;color:#fff}
+.btn-pdf{background:linear-gradient(135deg,#059669,#047857);color:#fff}
 .btn-sms{background:#7c3aed;color:#fff}
 .sms-row{display:none;margin-top:10px;gap:8px;align-items:center}
 .sms-row input{flex:1;padding:9px 12px;border:1.5px solid #e2e8f0;border-radius:8px;font-size:.93rem}
 .sms-row button{padding:9px 14px;background:#7c3aed;color:#fff;border:none;border-radius:8px;font-size:.85rem;font-weight:700;cursor:pointer}
+@media print{
+  body > *{display:none!important}
+  #printArea{display:block!important;position:fixed;top:0;left:0;width:100%;background:#fff}
+  @page{margin:0.5in}
+}
+#printArea{display:none}
 </style>
 </head>
 <body>
 <h1 class="app-title">🐝 Honey Bee Rides - Receipt Generator</h1>
 <div class="app-wrapper">
-
-<!-- SETTINGS PANEL -->
 <div class="panel full-width">
 <h2>⚙️ Driver / Business Settings <span class="saved-msg" id="savedMsg">✓ Saved!</span></h2>
 <div class="settings-grid">
@@ -95,14 +109,10 @@ h1.app-title{text-align:center;color:#1a2e4a;font-size:1.4rem;margin-bottom:16px
 </div>
 <button class="save-btn" onclick="saveSettings()">💾 Save Settings</button>
 </div>
-
-<!-- FORM PANEL -->
 <div class="panel form-panel">
 <h2>📋 Receipt Details</h2>
-
 <div class="fg"><label>Customer Name</label><input id="custName" placeholder="John Smith"></div>
 <div class="fg"><label>Date of Ride</label><input type="date" id="rideDate"></div>
-
 <div class="fg">
 <label>Trip Type</label>
 <div class="trip-toggle">
@@ -115,7 +125,6 @@ h1.app-title{text-align:center;color:#1a2e4a;font-size:1.4rem;margin-bottom:16px
 </div>
 <div class="custom-hint">Type a custom ride above — OR select a DIA button</div>
 </div>
-
 <div class="fg">
 <label>Payment Method</label>
 <div class="pay-btns">
@@ -128,7 +137,6 @@ h1.app-title{text-align:center;color:#1a2e4a;font-size:1.4rem;margin-bottom:16px
 <input type="text" id="last4" maxlength="4" inputmode="numeric" pattern="[0-9]*" placeholder="0000">
 </div>
 </div>
-
 <div class="fg fare-row">
 <div class="fg"><label>Base Fare ($)</label><input type="number" id="baseFare" placeholder="0.00" step="0.01" oninput="calcTotal()"></div>
 <div class="fg"><label>Tip ($)</label><input type="number" id="tipAmt" placeholder="0.00" step="0.01" oninput="calcTotal()"></div>
@@ -137,20 +145,17 @@ h1.app-title{text-align:center;color:#1a2e4a;font-size:1.4rem;margin-bottom:16px
 <div class="lbl">Total Charged</div>
 <div class="amt" id="totalDisplay">$0.00</div>
 </div>
-
 <button class="gen-btn" onclick="generateReceipt()">🧾 Generate Receipt</button>
 </div>
-
-<!-- RECEIPT PANEL -->
 <div class="panel receipt-panel">
 <h2>🧾 Receipt Preview</h2>
 <div class="receipt-wrap">
-<div class="receipt" id="receiptOut">
-<div style="text-align:center;color:#a0aec0;padding:40px 20px;font-size:.85rem;">Fill in the form and click Generate Receipt</div>
+<div id="receiptDoc">
+<div style="text-align:center;color:#a0aec0;padding:60px 20px;font-size:.85rem;">Fill in the form and click Generate Receipt</div>
 </div>
 </div>
 <div class="action-btns" id="actionBtns" style="display:none">
-<button class="btn-email" onclick="sendEmail()">📧 Send via Email</button>
+<button class="btn-pdf" onclick="savePDF()">📄 Save / Print as PDF</button>
 <button class="btn-sms" onclick="toggleSms()">📱 Send via Text</button>
 </div>
 <div class="sms-row" id="smsRow">
@@ -158,9 +163,8 @@ h1.app-title{text-align:center;color:#1a2e4a;font-size:1.4rem;margin-bottom:16px
 <button onclick="doSms()">Send</button>
 </div>
 </div>
-
 </div>
-
+<div id="printArea"></div>
 <script>
 var selectedTrip = "";
 var selectedPay = "";
@@ -249,91 +253,87 @@ function generateReceipt() {
   var base  = parseFloat(document.getElementById("baseFare").value) || 0;
   var tip   = parseFloat(document.getElementById("tipAmt").value)   || 0;
   var total = base + tip;
-  var biz = localStorage.getItem("hbr-biz") || document.getElementById("sBiz").value || "Honey Bee Rides";
-  var drv = localStorage.getItem("hbr-drv") || document.getElementById("sDrv").value || "";
-  var ph  = localStorage.getItem("hbr-ph")  || document.getElementById("sPh").value  || "";
-  var plt = localStorage.getItem("hbr-plt") || document.getElementById("sPlt").value || "";
-  var veh = localStorage.getItem("hbr-veh") || document.getElementById("sVeh").value || "";
+  var biz  = localStorage.getItem("hbr-biz") || document.getElementById("sBiz").value || "Honey Bee Rides";
+  var drv  = localStorage.getItem("hbr-drv") || document.getElementById("sDrv").value || "";
+  var ph   = localStorage.getItem("hbr-ph")  || document.getElementById("sPh").value  || "";
+  var plt  = localStorage.getItem("hbr-plt") || document.getElementById("sPlt").value || "";
+  var veh  = localStorage.getItem("hbr-veh") || document.getElementById("sVeh").value || "";
   var logo = localStorage.getItem("hbr-logo") || "";
   var rnum = "R-" + Math.floor(100000 + Math.random()*900000);
-  var logoHtml = logo ? '<img src="' + logo + '" alt="logo">' : '<div style="font-size:28px">🐝</div>';
   var L = [];
-  L.push("==============================");
-  L.push("       " + biz.toUpperCase());
-  L.push("      Private Car Service");
-  L.push("==============================");
-  L.push("RECEIPT #: " + rnum);
-  L.push("Date:      " + rideDate);
-  L.push("------------------------------");
+  L.push(biz.toUpperCase() + " - RECEIPT");
+  L.push("Receipt #: " + rnum);
+  L.push("Date: " + rideDate);
+  L.push("----------------------------");
   L.push("Passenger: " + custName);
-  L.push("Trip:      " + tripLabel);
-  L.push("Payment:   " + payLabel);
-  L.push("------------------------------");
+  L.push("Trip: " + tripLabel);
+  L.push("Payment: " + payLabel);
+  L.push("----------------------------");
   L.push("Base Fare: $" + base.toFixed(2));
-  L.push("Tip:       $" + tip.toFixed(2));
-  L.push("==============================");
-  L.push("TOTAL:     $" + total.toFixed(2));
-  L.push("==============================");
-  L.push("Ride Provided By:");
-  if (drv) L.push("  Driver:  " + drv);
-  if (veh) L.push("  Vehicle: " + veh);
-  if (plt) L.push("  Plate:   " + plt);
-  if (ph)  L.push("  Contact: " + ph);
-  L.push("------------------------------");
+  L.push("Tip: $" + tip.toFixed(2));
+  L.push("TOTAL: $" + total.toFixed(2));
+  L.push("----------------------------");
+  if (drv) L.push("Driver: " + drv);
+  if (veh) L.push("Vehicle: " + veh);
+  if (plt) L.push("Plate: " + plt);
+  if (ph)  L.push("Contact: " + ph);
   L.push("Thank you for riding with us!");
-  L.push("  Reliable Rides at a Sweet Price");
   receiptText = L.join("\n");
+  var logoHtml = logo ? '<img src="' + logo + '" alt="logo" style="max-width:80px;max-height:60px;object-fit:contain">' : '<div style="font-size:40px">🐝</div>';
+  var driverRows = "";
+  if (drv) driverRows += '<div class="rec-driver-item"><div class="dk">Driver</div><div class="dv">' + drv + '</div></div>';
+  if (veh) driverRows += '<div class="rec-driver-item"><div class="dk">Vehicle</div><div class="dv">' + veh + '</div></div>';
+  if (plt) driverRows += '<div class="rec-driver-item"><div class="dk">License Plate</div><div class="dv">' + plt + '</div></div>';
+  if (ph)  driverRows += '<div class="rec-driver-item"><div class="dk">Contact</div><div class="dv">' + ph + '</div></div>';
   var h = "";
-  h += '<div class="receipt-tear-top"></div>';
-  h += '<div class="receipt-inner">';
-  h += '<div class="r-logo">' + logoHtml + '</div>';
-  h += '<div class="r-biz">' + biz + '</div>';
-  h += '<div class="r-sub">Private Car Service</div>';
-  h += '<hr class="r-dash">';
-  h += '<div class="r-badge">*** RECEIPT ***</div>';
-  h += '<hr class="r-dash">';
-  h += '<div class="r-section">';
-  h += '<div class="r-row"><span class="rk">Receipt #</span><span class="rv">' + rnum + '</span></div>';
-  h += '<div class="r-row"><span class="rk">Date</span><span class="rv">' + rideDate + '</span></div>';
+  h += '<div class="rec-header">';
+  h +=   '<div class="rec-header-logo">' + logoHtml + '</div>';
+  h +=   '<div class="rec-header-text">';
+  h +=     '<div class="rec-biz-name">' + biz + '</div>';
+  h +=     '<div class="rec-tagline">Private Car Service</div>';
+  h +=     '<div class="rec-badge">RECEIPT</div>';
+  h +=   '</div>';
+  h +=   '<div style="text-align:right;color:rgba(255,255,255,.7);font-size:.75rem">';
+  h +=     '<div style="font-size:1.1rem;font-weight:800;color:#fff">#' + rnum + '</div>';
+  h +=     '<div>' + rideDate + '</div>';
+  h +=   '</div>';
   h += '</div>';
-  h += '<hr class="r-dash">';
-  h += '<div class="r-section">';
-  h += '<div class="r-row"><span class="rk">Passenger</span><span class="rv">' + custName + '</span></div>';
-  h += '<div class="r-row"><span class="rk">Trip</span><span class="rv" style="text-align:right;max-width:170px">' + tripLabel + '</span></div>';
-  h += '<div class="r-row"><span class="rk">Payment</span><span class="rv">' + payLabel + '</span></div>';
+  h += '<div class="rec-body">';
+  h += '<div class="rec-section">';
+  h +=   '<div class="rec-section-title">Trip Details</div>';
+  h +=   '<div class="rec-row"><span class="rk">Passenger</span><span class="rv">' + custName + '</span></div>';
+  h +=   '<div class="rec-row"><span class="rk">Trip Type</span><span class="rv">' + tripLabel + '</span></div>';
+  h +=   '<div class="rec-row"><span class="rk">Payment</span><span class="rv">' + payLabel + '</span></div>';
   h += '</div>';
-  h += '<hr class="r-dash">';
-  h += '<div class="r-section">';
-  h += '<div class="r-row"><span class="rk">Base Fare</span><span class="rv">$' + base.toFixed(2) + '</span></div>';
-  h += '<div class="r-row"><span class="rk">Tip</span><span class="rv">$' + tip.toFixed(2) + '</span></div>';
+  h += '<div class="rec-section">';
+  h +=   '<div class="rec-section-title">Fare Breakdown</div>';
+  h +=   '<div class="rec-row"><span class="rk">Base Fare</span><span class="rv">$' + base.toFixed(2) + '</span></div>';
+  h +=   '<div class="rec-row"><span class="rk">Tip / Gratuity</span><span class="rv">$' + tip.toFixed(2) + '</span></div>';
   h += '</div>';
-  h += '<div class="r-total"><span>TOTAL CHARGED</span><span>$' + total.toFixed(2) + '</span></div>';
-  h += '<hr class="r-dash">';
-  h += '<div class="r-section" style="font-size:10px">';
-  h += '<div style="font-weight:700;margin-bottom:3px">Ride Provided By:</div>';
-  if (drv) h += '<div class="r-row"><span class="rk">Driver</span><span class="rv">' + drv + '</span></div>';
-  if (veh) h += '<div class="r-row"><span class="rk">Vehicle</span><span class="rv">' + veh + '</span></div>';
-  if (plt) h += '<div class="r-row"><span class="rk">Plate</span><span class="rv">' + plt + '</span></div>';
-  if (ph)  h += '<div class="r-row"><span class="rk">Contact</span><span class="rv">' + ph + '</span></div>';
+  h += '<div class="rec-total-box">';
+  h +=   '<div class="tl">Total Charged</div>';
+  h +=   '<div class="ta">$' + total.toFixed(2) + '</div>';
   h += '</div>';
-  h += '<div class="r-stars">* * * * * * * * * *</div>';
-  h += '<div class="r-thanks">Thank you for riding with us!<br>Reliable Rides at a Sweet Price</div>';
+  if (driverRows) {
+    h += '<div class="rec-driver">';
+    h +=   '<div class="rec-driver-title">Ride Provided By</div>';
+    h +=   '<div class="rec-driver-grid">' + driverRows + '</div>';
+    h += '</div>';
+  }
   h += '</div>';
-  h += '<div class="receipt-tear-bot"></div>';
-  document.getElementById("receiptOut").innerHTML = h;
+  h += '<div class="rec-footer">';
+  h +=   '<p>Thank you for choosing <strong>' + biz + '</strong></p>';
+  h +=   '<p style="margin-top:4px">Reliable Rides at a Sweet Price</p>';
+  h += '</div>';
+  document.getElementById("receiptDoc").innerHTML = h;
   document.getElementById("actionBtns").style.display = "flex";
 }
-function sendEmail() {
-  var biz = localStorage.getItem("hbr-biz") || document.getElementById("sBiz").value || "Honey Bee Rides";
-  var subject = encodeURIComponent(biz + " - Your Ride Receipt");
-  var body = encodeURIComponent(receiptText);
-  var mailto = "mailto:?subject=" + subject + "&body=" + body;
-  var a = document.createElement("a");
-  a.href = mailto;
-  a.style.display = "none";
-  document.body.appendChild(a);
-  a.click();
-  setTimeout(function(){ document.body.removeChild(a); }, 1000);
+function savePDF() {
+  var printArea = document.getElementById("printArea");
+  printArea.innerHTML = document.getElementById("receiptDoc").outerHTML;
+  printArea.style.display = "block";
+  window.print();
+  setTimeout(function(){ printArea.style.display = "none"; printArea.innerHTML = ""; }, 1000);
 }
 function toggleSms() {
   var row = document.getElementById("smsRow");
